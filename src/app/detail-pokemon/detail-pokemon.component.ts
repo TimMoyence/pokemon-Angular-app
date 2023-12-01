@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { POKEMONS } from '../mock.pokemon';
 import { Pokemon } from '../pokemon';
 
@@ -9,14 +9,10 @@ import { Pokemon } from '../pokemon';
   styles: ``
 })
 export class DetailPokemonComponent implements OnInit{
-goBack() {
-throw new Error('Method not implemented.');
-}
-
   pokemonList: Pokemon[];
   pokemon: Pokemon|undefined;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.pokemonList = POKEMONS;
@@ -24,5 +20,9 @@ throw new Error('Method not implemented.');
     if (pokemonId) {
       this.pokemon = this.pokemonList.find(pokemon => pokemon.id === +pokemonId);
     } 
+  }
+
+  goBack() {
+  this.router.navigate(['/pokemons']);
   }
 }

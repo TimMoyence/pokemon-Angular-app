@@ -14,7 +14,7 @@ import { DetailPokemonComponent } from './detail-pokemon/detail-pokemon.componen
     BorderCardDirective,
     PokemonTypeColorPipe,
     ListPokemonComponent,
-    DetailPokemonComponent
+    DetailPokemonComponent,
   ],
   imports: [
     BrowserModule,
