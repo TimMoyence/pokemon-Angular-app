@@ -18,17 +18,16 @@ export class ListPokemonComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.pokemonList = this.pokemonService.getPokemonList();
+    this.pokemonService.getPokemonList()
+      .subscribe(pokemonList => this.pokemonList = pokemonList);
   }
 
   SelectedPokemon(pokemonName: string) {
-    const pokemon: Pokemon|undefined = this.pokemonService.getPokemonByName(pokemonName);
-    if (pokemon) {
-      console.log(`You selected ${pokemon.name}!`);
-      this.pokemonSelected = pokemon;
+    this.pokemonService.getPokemonByName(pokemonName).subscribe( pokemonSelected => this.pokemonSelected = pokemonSelected);
+    if (this.pokemonSelected) {
+      console.log(`You selected ${this.pokemonSelected.name}!`);
     } else {
-      console.log(`Pokemon with id ${pokemon} not found!`);
-      this.pokemonSelected = pokemon;
+      console.log(`Pokemon with  ${this.pokemonSelected} not found!`);
     }
   }
 
